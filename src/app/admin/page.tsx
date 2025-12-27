@@ -309,42 +309,50 @@ export default function AdminPage() {
         <main className="min-h-screen p-8 bg-gray-50">
             <div className="max-w-6xl mx-auto space-y-8">
                 {/* Header */}
-                <div className="flex justify-between items-center flex-wrap gap-4">
+                <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-6">
                     <div>
                         <h1 className="text-3xl font-bold text-slate-800">📊 출석 현황 대시보드</h1>
                         <p className="text-slate-500 mt-1">{todayStr} 기준</p>
                     </div>
-                    <div className="flex gap-3">
-                        <button
-                            onClick={handleDownloadExcel}
-                            className="px-4 py-3 bg-green-600 text-white rounded-xl hover:bg-green-700 transition shadow-sm font-bold flex items-center gap-2"
-                        >
-                            <span>📑</span> 엑셀 저장
-                        </button>
-                        <button
-                            onClick={handleDownloadPDF}
-                            className="px-4 py-3 bg-red-500 text-white rounded-xl hover:bg-red-600 transition shadow-sm font-bold flex items-center gap-2"
-                        >
-                            <span>📄</span> PDF 저장
-                        </button>
-                        <a
-                            href="/"
-                            className="px-6 py-3 bg-white text-slate-700 border border-slate-200 rounded-xl hover:bg-slate-50 transition shadow-sm font-bold flex items-center"
-                        >
-                            🏠 홈으로
-                        </a>
-                        <button
-                            onClick={() => setIsAddModalOpen(true)}
-                            className="px-6 py-3 bg-emerald-600 text-white rounded-xl hover:bg-emerald-700 transition shadow-md font-bold flex items-center gap-2"
-                        >
-                            <span>➕</span> 학생 추가
-                        </button>
-                        <button
-                            onClick={fetchData}
-                            className="px-6 py-3 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 transition shadow-md font-bold"
-                        >
-                            새로고침
-                        </button>
+
+                    <div className="flex flex-col gap-3">
+                        {/* Main Actions */}
+                        <div className="flex gap-3 flex-wrap">
+                            <a
+                                href="/"
+                                className="flex-1 md:flex-none px-6 py-3 bg-white text-slate-700 border border-slate-200 rounded-xl hover:bg-slate-50 transition shadow-sm font-bold flex items-center justify-center"
+                            >
+                                🏠 홈으로
+                            </a>
+                            <button
+                                onClick={() => setIsAddModalOpen(true)}
+                                className="flex-1 md:flex-none px-6 py-3 bg-emerald-600 text-white rounded-xl hover:bg-emerald-700 transition shadow-md font-bold flex items-center justify-center gap-2"
+                            >
+                                <span>➕</span> 학생 추가
+                            </button>
+                            <button
+                                onClick={fetchData}
+                                className="flex-1 md:flex-none px-6 py-3 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 transition shadow-md font-bold"
+                            >
+                                새로고침
+                            </button>
+                        </div>
+
+                        {/* Download Actions (New Row) */}
+                        <div className="flex gap-3">
+                            <button
+                                onClick={handleDownloadExcel}
+                                className="flex-1 px-4 py-3 bg-green-600 text-white rounded-xl hover:bg-green-700 transition shadow-sm font-bold flex items-center justify-center gap-2 text-sm md:text-base"
+                            >
+                                <span>📑</span> 엑셀 저장
+                            </button>
+                            <button
+                                onClick={handleDownloadPDF}
+                                className="flex-1 px-4 py-3 bg-red-500 text-white rounded-xl hover:bg-red-600 transition shadow-sm font-bold flex items-center justify-center gap-2 text-sm md:text-base"
+                            >
+                                <span>📄</span> PDF 저장
+                            </button>
+                        </div>
                     </div>
                 </div>
 
